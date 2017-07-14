@@ -1,0 +1,409 @@
+
+<!--{template common/header}-->
+<style id="diy_style" type="text/css"></style>
+<div class="wp">
+	<!--[diy=diy1]--><div id="diy1" class="area"></div><!--[/diy]-->
+</div>
+
+<!--banner--><div class="yb_banner">
+
+ <!--[diy=diyyibaicity806]--><div id="diyyibaicity806" class="area"></div><!--[/diy]-->
+</div><!--banner-->
+<!--banner--><div class="yb_banner">
+
+ <!--[diy=diyyibaicity807]--><div id="diyyibaicity807" class="area"></div><!--[/diy]-->
+</div><!--banner-->
+
+<!--第一部分-->
+<div class="yb_conone">
+  <!--left-->
+  <div class="yb_conone_l">
+  
+    <div id="yb_lunbo" class="slidebox">
+       <!--轮播-->  
+    <!--[diy=diycity801]--><div id="diycity801" class="area"></div><!--[/diy]-->
+    </div><!--轮播end-->
+    <!--资讯导读-->
+    <div class="yb_reading">
+      <div class="yb_otitle">资讯导读</div>
+      <div class="yb_obot">
+         <!--[diy=diyyibaicity802]--><div id="diyyibaicity802" class="area"></div><!--[/diy]-->
+
+      </div>
+    </div>
+    <!--资讯导读end-->  
+    
+  </div>
+  <!--leftend-->
+  <!--center-->
+  <div class="yb_conone_c">
+           <!--[diy=diyyibaicity803]--><div id="diyyibaicity803" class="area"></div><!--[/diy]-->
+
+  
+  </div>
+  <!--centerend-->
+  <!--right-->
+  <div class="yb_conone_r">
+  
+  <!--公告-->
+  <div class="yb_gongao">  
+  		<div class="hd">  
+      <div class="yb_ggtop"><a href="#">本站公告</a><a href="#">当前在线</a></div>
+      	</div>
+        <div class="bd">
+      <div class="yb_ggbot">
+       <!--[diy=diyyibaicity012701]--><div id="diyyibaicity012701" class="area"></div><!--[/diy]-->
+        
+      </div> 
+      <div class="yb_ggbot">
+             <!--[diy=diyyibaicity012702]--><div id="diyyibaicity012702" class="area"></div><!--[/diy]-->
+       
+      </div>     
+      </div>
+  </div>
+  	<script type="text/javascript">jQuery(".yb_gongao").slide({titCell:".hd .yb_ggtop a ",mainCell:".bd "});</script>
+  <!--公告end-->
+  
+  <!--用户-->
+  <!--{if $_G['uid']}-->
+  <!--{eval $kmmember = C::t('common_member_count')->fetch($_G['uid']);}-->
+    <div class="yb_login">
+      <div class="mthrb_lone" style="height:70px;">
+         <dl>
+           <dt><a href="home.php?mod=space&uid=$_G[uid]"><!--{avatar($_G[uid],middle)}--></a></dt>
+           <dd><a href="home.php?mod=space&uid=$_G[uid]" class="o_a1">Hi，{$_G[member][username]} </a><bR />欢迎您光临本站</dd>
+         </dl>
+       </div> 
+       <div class="rhy_tqhyl2_div">
+        <a href="home.php?mod=space&do=friend"><strong>$kmmember[friends]</strong>好友</a>
+             <a href="forum.php?mod=guide&view=my"><strong>{$kmmember[posts]}</strong>帖子</a>
+             <a href="home.php?mod=spacecp&ac=credit&showcredit=1"><strong>$_G[member][credits]</strong>积分</a>
+       </div>     
+  </div>
+     <!--{else}-->
+  <div class="yb_login">
+      <div class="mthrb_lone">
+         <dl>
+           <dt><a href="#"><img src="template/tekin_qxmh/style/img1.png" /></a></dt>
+           <dd><a href="#" class="o_a1">Hi，小游客！ </a><bR />欢迎您光临本站</dd>
+         </dl>
+       </div> 
+       <div class="mthrb_ltwo">
+         <a href="member.php?mod=logging&action=login" onclick="showWindow('login', this.href);hideWindow('register');"  class="twoa">会员登录</a>       
+         <a href="member.php?mod=register">马上注册</a>
+         <a  href="forum.php?mod=misc&action=nav" onclick="showWindow('nav', this.href, 'get', 0)">快速发布</a>
+       </div>     
+  </div>
+       <!--{/if}--> 
+  <!--用户end-->
+  
+  <!--小导航-->
+  <div class="yb_smnav">
+   <!--[diy=diyyibaicity808]--><div id="diyyibaicity808" class="area"></div><!--[/diy]-->
+   
+  </div>
+  <!--小导航end-->
+  
+  <!--资讯导读-->
+    <div class="yb_reading">
+      <div class="yb_otitle">图文热点</div>
+      <div class="yb_tbot">
+           <!--[diy=diyyibaicity804]--><div id="diyyibaicity804" class="area"></div><!--[/diy]-->
+        
+  
+      </div>
+    </div>
+  <!--资讯导读end-->  
+  
+  </div>
+  <!--rightend-->
+</div>
+<!--第一部分end-->
+
+<!--banner--><div class="yb_banner">
+
+
+ <!--[diy=diyyibaicity805]--><div id="diyyibaicity805" class="area"></div><!--[/diy]-->
+</div><!--banner-->
+
+<!--惠生活-->
+<div class="yb_discount">
+
+  <div class="yb_distop">  
+	<div class="twotop_l"><strong>惠生活</strong>在线预订，尽显优惠</div>
+	<div class="twotop_r">
+    <div class="hd">
+		<ul class="twotop_rul">
+			<li ><a href="javascript:;">美食</a></li>
+			<li><a href="javascript:;">推荐</a></li>
+			<li><a href="javascript:;">特价</a></li>
+		</ul>
+        </div>
+	</div>
+  </div>
+  <div class="bd">
+  <div class="yb_disbot">
+   <!--[diy=diyyibaicity809]--><div id="diyyibaicity809" class="area"></div><!--[/diy]-->
+ 
+ 
+  </div>  
+    <div class="yb_disbot">
+     <!--[diy=diyyibaicity810]--><div id="diyyibaicity810" class="area"></div><!--[/diy]-->
+
+  </div> 
+    <div class="yb_disbot">
+    <!--[diy=diyyibaicity811]--><div id="diyyibaicity811" class="area"></div><!--[/diy]-->
+
+  </div> 
+   </div>     
+</div>
+		<script type="text/javascript">jQuery(".yb_discount").slide({titCell:".hd .twotop_rul li ",mainCell:".bd "});</script>
+<!--惠生活end-->
+
+
+<!--城市生活-->
+<div class="yb_city">
+
+  <div class="yb_distop">  
+	<div class="twotop_l"><strong>城市生活</strong>满足你生活中的点点滴滴</div>
+  </div>
+  
+  <!--六大块-->
+  
+  <div class="yb_citybot">
+  
+    <!--一-->
+    <div class="yb_cbox">
+	  <div class="yb_cboxtop"><a href="">更多&gt;&gt;</a><i class="bicon meishi"></i>美食<span>特价美肴，嗨翻天</span></div>	
+      
+      <!--bot-->
+      <div class="yb_cbox_bot">      		
+      <!--left-->
+      <div class="yb_cboxl">
+      <!--[diy=diyyibaicity012901]--><div id="diyyibaicity012901" class="area"></div><!--[/diy]-->
+      </div> 
+      <!--leftend-->
+      <!--right-->
+ 
+      <div class="yb_cboxr">
+             <!--[diy=diyyibaicity012810]--><div id="diyyibaicity012810" class="area"></div><!--[/diy]-->
+
+      </div> 
+	  <!--rightend-->	      
+      </div>
+      <!--botend-->
+      	
+    </div>
+    <!--一end-->
+    
+    <!--一-->
+    <div class="yb_cbox">
+	  <div class="yb_cboxtop"><a href="">更多&gt;&gt;</a><i class="bicon xiuxian"></i>休闲娱乐<span>大众消费，贵族享受</span></div>	
+      
+      <!--bot-->
+      <div class="yb_cbox_bot">      		
+      <!--left-->
+      <div class="yb_cboxl">
+
+           <!--[diy=diyyibaicity012902]--><div id="diyyibaicity012902" class="area"></div><!--[/diy]-->
+      </div> 
+      <!--leftend-->
+      <!--right-->
+      <div class="yb_cboxr">
+                    <!--[diy=diyyibaicity012811]--><div id="diyyibaicity012811" class="area"></div><!--[/diy]-->
+      
+      </div> 
+	  <!--rightend-->	      
+      </div>
+      <!--botend-->
+      	
+    </div>
+    <!--一end-->
+    
+    <!--一-->
+    <div class="yb_cbox">
+	  <div class="yb_cboxtop"><a href="">更多&gt;&gt;</a><i class="bicon lvyou"></i>旅游出行<span>精品线路，超值出行</span></div>	
+      
+      <!--bot-->
+      <div class="yb_cbox_bot">      		
+      <!--left-->
+      <div class="yb_cboxl">
+  
+           <!--[diy=diyyibaicity012903]--><div id="diyyibaicity012903" class="area"></div><!--[/diy]-->
+      </div> 
+      <!--leftend-->
+      <!--right-->
+      <div class="yb_cboxr">
+         <!--[diy=diyyibaicity012812]--><div id="diyyibaicity012812" class="area"></div><!--[/diy]-->
+      
+      </div> 
+	  <!--rightend-->	      
+      </div>
+      <!--botend-->
+      	
+    </div>
+    <!--一end-->
+    
+    <!--一-->
+    <div class="yb_cbox">
+	  <div class="yb_cboxtop"><a href="">更多&gt;&gt;</a><i class="bicon zhusu"></i>住宿<span>星级体验，平民价格</span></div>	
+      
+      <!--bot-->
+      <div class="yb_cbox_bot">      		
+      <!--left-->
+      <div class="yb_cboxl">
+           <!--[diy=diyyibaicity012904]--><div id="diyyibaicity012904" class="area"></div><!--[/diy]-->
+      </div> 
+      <!--leftend-->
+      <!--right-->
+      <div class="yb_cboxr">
+         <!--[diy=diyyibaicity012813]--><div id="diyyibaicity012813" class="area"></div><!--[/diy]-->
+      </div> 
+	  <!--rightend-->	      
+      </div>
+      <!--botend-->
+      	
+    </div>
+    <!--一end-->
+    
+    
+    <!--一-->
+    <div class="yb_cbox">
+	  <div class="yb_cboxtop"><a href="">更多&gt;&gt;</a><i class="bicon shenghuo"></i>生活服务<span>享受最贴心的便利</span></div>	
+      
+      <!--bot-->
+      <div class="yb_cbox_bot">      		
+      <!--left-->
+      <div class="yb_cboxl">
+
+           <!--[diy=diyyibaicity012905]--><div id="diyyibaicity012905" class="area"></div><!--[/diy]-->
+      </div> 
+      <!--leftend-->
+      <!--right-->
+      <div class="yb_cboxr">
+           <!--[diy=diyyibaicity012814]--><div id="diyyibaicity012814" class="area"></div><!--[/diy]-->
+      
+      </div> 
+	  <!--rightend-->	      
+      </div>
+      <!--botend-->
+      	
+    </div>
+    <!--一end-->
+    
+    <!--一-->
+    <div class="yb_cbox">
+	  <div class="yb_cboxtop"><a href="">更多&gt;&gt;</a><i class="bicon gouwu"></i>购物<span>做一个最精明的购物狂</span></div>	
+      
+      <!--bot-->
+      <div class="yb_cbox_bot">      		
+      <!--left-->
+      <div class="yb_cboxl">
+           <!--[diy=diyyibaicity012906]--><div id="diyyibaicity012906" class="area"></div><!--[/diy]-->
+      </div> 
+      <!--leftend-->
+      <!--right-->
+      <div class="yb_cboxr">
+           <!--[diy=diyyibaicity012815]--><div id="diyyibaicity012815" class="area"></div><!--[/diy]-->
+      
+      </div> 
+	  <!--rightend-->	      
+      </div>
+      <!--botend-->
+      	
+    </div>
+    <!--一end-->
+
+  </div>  
+  <!--六大块end-->
+          
+</div>
+<!--城市生活end-->
+
+<!--banner--><div class="yb_banner">
+    <!--[diy=diyyibaicity012809]--><div id="diyyibaicity012809" class="area"></div><!--[/diy]-->
+
+</div><!--banner-->
+
+<!--大秀场-->
+<div class="yb_big">
+
+  <div class="yb_distop">  
+	<div class="twotop_l"><strong>大秀场</strong>读美文，看八卦，寻宝贝</div>
+	<div class="twotop_r">
+		<span class="yb_biga"><a href="#">会员汇</a>　｜　<a href="#">汽车用品</a>　｜　<a href="#">家电数码</a>　｜　<a href="#">品质服装</a></span>
+	</div>
+  </div>
+  
+  <div class="yb_bigbot">
+     
+    <div class="yb_hodone">
+
+     <!--[diy=diyyibaicity012801]--><div id="diyyibaicity012801" class="area"></div><!--[/diy]-->
+    </div>  
+    
+    
+    <div class="yb_hodthr">
+
+      <div class="yb_hodthrt"><!--[diy=diyyibaicity012802]--><div id="diyyibaicity012802" class="area"></div><!--[/diy]--></div>
+      <div class="yb_hodthrt">
+      <!--[diy=diyyibaicity012806]--><div id="diyyibaicity012806" class="area"></div><!--[/diy]-->
+      
+      
+      </div>
+    </div> 
+    
+    
+    <div class="yb_hodfour">
+        <!--[diy=diyyibaicity012803]--><div id="diyyibaicity012803" class="area"></div><!--[/diy]-->
+
+    </div>
+   
+    
+    <div class="yb_hodthr">
+              
+      <div class="yb_hodthrt">
+<!--[diy=diyyibaicity012804]--><div id="diyyibaicity012804" class="area"></div><!--[/diy]-->
+    </a>
+      </div>
+      <div class="yb_hodthrt">
+      <!--[diy=diyyibaicity012807]--><div id="diyyibaicity012807" class="area"></div><!--[/diy]-->
+      </div>
+    </div> 
+    
+    <div class="yb_hodfour">
+              <!--[diy=diyyibaicity012805]--><div id="diyyibaicity012805" class="area"></div><!--[/diy]-->
+   
+    </div>   
+     
+     
+  </div>  
+        
+</div>
+<!--大秀场end-->
+
+
+
+<!--友情链接-->
+<div class="yb_links">
+
+  <div class="yb_distop">  
+	<div class="twotop_l"><strong>友情链接</strong>我们诚挚邀请您加入！</div>
+	<div class="twotop_r">
+		<span class="yb_biga"><a href="#">更多>></a></span>
+	</div>
+  </div>
+  
+  <div class="yb_linksbot"> 
+    <!--[diy=diyyibaicity012808]--><div id="diyyibaicity012808" class="area"></div><!--[/diy]--> 
+
+  </div>  
+        
+</div>
+<!--友情链接end-->
+
+  
+
+<script src="misc.php?mod=diyhelp&action=get&type=index&diy=yes&r={echo random(4)}" type="text/javascript"></script>
+<!--{template common/footer}-->
+

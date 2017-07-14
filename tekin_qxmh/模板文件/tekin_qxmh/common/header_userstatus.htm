@@ -1,0 +1,127 @@
+
+<!-- 顶部导航 开始 -->
+<div id="top_nav"> 
+  <!--{hook/global_cpnav_top}-->
+  <div class="wp">
+    <div id="top_mainnav"> 
+      <!-- 左侧栏目 -->
+      <div class="z"> 
+        <!--{loop $_G['setting']['topnavs'][0] $nav}--> 
+        <!--{if $nav['available'] && (!$nav['level'] || ($nav['level'] == 1 && $_G['uid']) || ($nav['level'] == 2 && $_G['adminid'] > 0) || ($nav['level'] == 3 && $_G['adminid'] == 1))}-->$nav[code]<!--{/if}--> 
+        <!--{/loop}--> 
+        <!--{if empty($_G['disabledwidthauto']) && $_G['setting']['switchwidthauto']}-->
+		<a href="javascript:;" id="switchwidth" onClick="widthauto(this)" title="{if widthauto()}{lang switch_narrow}{else}{lang switch_wide}{/if}" class="switchwidth"><!--{if widthauto()}-->{lang switch_narrow}<!--{else}-->{lang switch_wide}<!--{/if}--></a>
+		<!--{/if}-->
+        <!--{hook/global_cpnav_extra1}--> 
+        <!--{hook/global_cpnav_extra2}--> 
+      </div>
+      <!-- 左侧栏目 --> 
+      <!-- 右侧栏目 -->
+      <div id="top_usermenu"> 
+        <!--{eval $mnid = getcurrentnav();}-->
+        <div class="status_loginned"> 
+          <!--{if $_G['uid']}--> 
+          <!-- 登录状态 --> 
+          <a href="home.php?mod=follow&uid=$_G[uid]&do=view&from=space" id="mn_myaccount" onMouseOver="showMenu({ctrlid:this.id, pos:'34'});"><span class="showmenu">{$_G[member][username]}</span></a> 
+          <!--{hook/global_usernav_extra1}--> 
+          <!--{eval $upgradecredit = $_G['uid'] && $_G['group']['grouptype'] == 'member' && $_G['group']['groupcreditslower'] != 999999999 ? $_G['group']['groupcreditslower'] - $_G['member']['credits'] : false;}--> 
+          <a href="home.php?mod=spacecp&ac=credit&showcredit=1" id="extcreditmenu"{if !$_G[setting][bbclosed]} onMouseOver="delayShow(this, showCreditmenu);" class="showmenu"{/if}>{lang credits}: $_G[member][credits]</a> <a id="mn_mymsg" onMouseOver="showMenu({ctrlid:this.id, pos:'34'});"><span class="showmenu">消息<!--{if $_G[member][newpm]}-->({$_G[member][newpm]})<!--{elseif $_G[member][newprompt]}-->({$_G[member][newprompt]})<!--{/if}--></span></a><a href="member.php?mod=logging&action=logout&formhash={FORMHASH}">{lang logout}</a> 
+          
+          <!--{elseif !empty($_G['cookie']['loginuser'])}--> 
+          <a id="loginuser" class="noborder"><!--{echo htmlspecialchars($_G['cookie']['loginuser'])}--></a> <a href="member.php?mod=logging&action=login" onClick="showWindow('login', this.href)">{lang activation}</a> <a href="member.php?mod=logging&action=logout&formhash={FORMHASH}">{lang logout}</a> 
+          <!--{elseif !$_G[connectguest]}--> 
+          <a href="javascript:;" onClick="javascript:lsSubmit();" class="user_login showmenu" id="l" onMouseOver="showMenu({ctrlid:this.id, pos:'34'});">{lang login}</a> <a href="member.php?mod={$_G[setting][regname]}">$_G['setting']['reglinkname']</a>
+          <div style="display:none"><!--{template member/login_simple}--> </div>
+          <!--{else}--> 
+          <!--{if !empty($_G['style']['extstyle'])}--><span id="sslct" href="javascript:;" title="{lang changestyle}" onMouseOver="delayShow(this, function() {showMenu({'ctrlid':'sslct','pos':'34!'})});"></span> <!--{/if}--> 
+          <a href="home.php?mod=follow&uid=$_G[uid]&do=view&from=space">{$_G[member][username]}</a> <a id="mn_mymsg" onMouseOver="showMenu({ctrlid:this.id, pos:'34'});"><span class="showmenu">消息<!--{if $_G[member][newpm]}-->({$_G[member][newpm]})<!--{/if}--></span></a> <a id="mn_myaccount" onMouseOver="showMenu({ctrlid:this.id, pos:'34'});"><span class="showmenu">帐号</span></a> 
+          <!--{/if}--> 
+         </div>
+      </div>
+      <!-- 右侧栏目 --> 
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+<!--{if $_G['uid'] || $_G[connectguest]}--> 
+
+<!-- 弹出菜单 -->
+<div id="mn_mymsg_menu" class="top_popmenu" style="display:none;">
+  <div class="top_poptitle"><span class="showmenu">消息<!--{if $_G[member][newpm]}-->({$_G[member][newpm]})<!--{elseif $_G[member][newprompt]}-->({$_G[member][newprompt]})<!--{/if}--></span></span></div>
+  <!--{if $_G[member][newpm]}-->
+  <ul>
+    <li>{$_G[member][newpm]}条新消息，<a class="light" href="home.php?mod=space&do=pm&filter=newpm">查看消息</a></li>
+  </ul>
+  <div class="divider"></div>
+  <!--{elseif $_G[member][newprompt]}-->
+  <ul>
+    <li>{$_G[member][newprompt]}条新通知，<a class="light" href="home.php?mod=space&do=notice">查看通知</a></li>
+  </ul>
+  <div class="divider"></div>
+  <!--{/if}-->
+  <ul class="listmenu">
+    <li><a href="home.php?mod=space&amp;do=notice&amp;type=post&amp;isread=$_G[uid]"><i class="ic16"></i>查看回复</a></li>
+    <li><a href="home.php?mod=space&amp;do=notice&amp;type=at&amp;isread=$_G[uid]"><i class="ic17"></i>查看@我</a></li>
+    <li><a href="home.php?mod=space&amp;do=pm&amp;isread=$_G[uid]"><i class="ic18"></i>查看消息</a></li>
+    <li><a href="home.php?mod=space&do=notice&isread=$_G[uid]"><i class="ic20"></i>查看通知</a></li>
+  </ul>
+</div>
+<!-- 我的帐号 -->
+<div id="mn_myaccount_menu" class="top_popmenu" style="display:none;">
+  <div class="top_poptitle"><a href="home.php?mod=space&amp;uid=$_G[uid]&amp;do=profile&amp;from=space" class="showmenu">{$_G[member][username]}</a></div>
+  <div class="my_avatar"> <a class="avatar" href="home.php?mod=spacecp&amp;ac=avatar"><img src="uc_server/avatar.php?uid=$_G[uid]&size=small" /></a>
+    <p class="avatar_info"> 
+      <a href="home.php?mod=spacecp&ac=avatar" class="light">修改头像</a> </p>
+  </div>
+  <div class="divider"></div>
+  <ul class="listmenu">
+  <li><a href="home.php?mod=space&do=friend"><i class="ic28"></i>我的好友</a></li>
+    <li><a href="forum.php?mod=guide&view=my"><i class="ic24"></i>我的帖子</a></li>
+    <li><a href="home.php?mod=space&amp;do=favorite&amp;view=me"><i class="ic25"></i>我的收藏</a></li>
+    <li><a href="home.php?mod=medal"><i class="ic26"></i>荣誉勋章</a></li>
+  </ul>
+  <div class="divider"></div>
+  
+    <ul class="listmenu">
+  <li><a href="home.php?mod=space&do=share"><i class="ic33"></i>我的分享</a></li>
+    <li><a href="home.php?mod=space&do=blog&view=me"><i class="ic34"></i>我的日志</a></li>
+    <li><a href="home.php?mod=space&do=album&view=me"><i class="ic35"></i>我的相册</a></li>
+    <li><a href="home.php?mod=space&uid=$_G[uid]&do=wall&from=space"><i class="ic36"></i>我的留言</a></li>
+  </ul>
+  
+    <div class="divider"></div>
+  <ul class="listmenu">
+    <li><a href="home.php?mod=spacecp"><i class="ic21"></i>个人资料</a></li>
+    <li><a href="home.php?mod=spacecp&amp;ac=plugin&amp;id=qqconnect:spacecp"><i class="ic22"></i>帐号绑定</a></li>
+    <li><a href="home.php?mod=spacecp&amp;ac=profile&amp;op=password"><i class="ic23"></i>修改密码</a></li>
+  </ul>
+   <div class="divider"></div>
+  <!-- 管理选项 -->
+    <ul class="listmenu">
+    <!--{if check_diy_perm($topic)}-->
+    <li><a href="javascript:openDiy();" title="{lang open_diy}"><i class="ic30"></i>打开DIY</a></li>
+    <!--{/if}--> 
+    <!--{if ($_G['group']['allowmanagearticle'] || $_G['group']['allowpostarticle'] || $_G['group']['allowdiy'] || getstatus($_G['member']['allowadmincp'], 4) || getstatus($_G['member']['allowadmincp'], 6) || getstatus($_G['member']['allowadmincp'], 2) || getstatus($_G['member']['allowadmincp'], 3))}-->
+    <li><a href="portal.php?mod=portalcp"><i class="ic31"></i><!--{if $_G['setting']['portalstatus'] }-->{lang portal_manage}<!--{else}-->{lang portal_block_manage}<!--{/if}--></a></li>
+    <!--{/if}--> 
+    <!--{if $_G['uid'] && $_G['group']['radminid'] > 1}-->
+    <li><a href="forum.php?mod=modcp&fid=$_G[fid]" target="_blank"><i class="ic24"></i>{lang forum_manager}</a></li>
+    <!--{/if}--> 
+    <!--{if $_G['uid'] && $_G['adminid'] == 1 && $_G['setting']['cloud_status']}-->
+    <li><a href="admin.php?frames=yes&amp;action=cloud&amp;operation=applist" target="_blank"><i class="ic29"></i>云平台</a></li>
+    <!--{/if}--> 
+    <!--{if $_G['uid'] && getstatus($_G['member']['allowadmincp'], 1)}-->
+    <li><a href="admin.php" target="_blank"><i class="ic32"></i>管理中心</a></li>
+    <!--{/if}-->
+  </ul>
+  <!-- 管理选项 -->
+</div>
+<!--{/if}--> 
+
+<!-- 顶部导航 结束 -->

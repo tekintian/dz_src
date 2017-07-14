@@ -1,0 +1,191 @@
+
+<!--{template common/header}-->
+<!--[name]tekin_qxmh资讯列表[/name]-->
+<!--{eval $list = array();}-->
+<!--{eval $wheresql = category_get_wheresql($cat);}-->
+<!--{eval $list = category_get_list($cat, $wheresql, $page);}-->
+<div id="pt" class="bm cl">
+  <div class="z"> <a href="./" class="nvhm" title="{lang homepage}">$_G[setting][bbname]</a> <em>&rsaquo;</em> <a href="$_G[setting][navs][1][filename]">{lang portal}</a> <em>&rsaquo;</em> 
+    <!--{loop $cat[ups] $value}--> <a href="{$portalcategory[$value['catid']]['caturl']}">$value[catname]</a><em>&rsaquo;</em><!--{/loop}--> 
+    $cat[catname] </div>
+</div>
+
+<!--{ad/text/wp a_t}-->
+<style id="diy_style" type="text/css">
+</style>
+<div class="wp"> 
+  <!--[diy=diy1]-->
+  <div id="diy1" class="area"></div>
+  <!--[/diy]--> 
+</div>
+<div id="ct" class="ct2 wp cl">
+  <div class="mn"> 
+    <!--{ad/articlelist/mbm hm/1}--><!--{ad/articlelist/mbm hm/2}--> 
+    <!--[diy=listcontenttop]-->
+    <div id="listcontenttop" class="area"></div>
+    <!--[/diy]-->
+    <div class="bm">
+      <div class="portal_tit cl" style="padding-left:20px;">
+        <h1>$cat[catname]</h1>
+        <!--{if $_G[setting][rssstatus] && !$_GET['archiveid']}--><a href="portal.php?mod=rss&catid=$cat[catid]" class="y rss" target="_blank" title="RSS">{lang rss_subscribe_this}</a><!--{/if}--> 
+        <!--{if ($_G['group']['allowpostarticle'] || $_G['group']['allowmanagearticle'] || $categoryperm[$catid]['allowmanage'] || $categoryperm[$catid]['allowpublish']) && empty($cat['disallowpublish'])}--> 
+        <a href="portal.php?mod=portalcp&ac=article&catid=$cat[catid]" class="y add">投稿</a> 
+        <!--{/if}--> 
+      </div>
+      
+      <!-- 文章列表 begin -->
+      
+      <div class="list_new"> 
+        <!--{loop $list['list'] $value}--> 
+        <!--{eval $highlight = article_title_style($value);}--> 
+        <!--{eval $article_url = fetch_article_url($value);}-->
+        
+        <div class="top_new cl">
+          <h2><a href="$article_url" target="_blank" $highlight>$value[title]</a> <!--{if $value[status] == 1}-->({lang moderate_need})<!--{/if}--></h2>
+          <div class="cl"> 
+            <!--{if $value[pic]}-->
+            <div class="new_pic"><a href="$article_url" target="_blank"><img src="$value[pic]" alt="$value[title]"/></a></div>
+            <!--{/if}-->
+            <div class="new_body">$value[summary]
+              <div class="new_info"><span class="new_time">$value[dateline]</span><!--{if $value[catname] && $cat[subs]}--><span class="pipe">|</span><span class="new_edt"><a href="{$portalcategory[$value['catid']]['caturl']}">$value[catname]</a></span><!--{/if}--><!--{if $_G['group']['allowmanagearticle'] || ($_G['group']['allowpostarticle'] && $value['uid'] == $_G['uid'] && (empty($_G['group']['allowpostarticlemod']) || $_G['group']['allowpostarticlemod'] && $value['status'] == 1)) || $categoryperm[$value['catid']]['allowmanage']}--> 
+                <span class="pipe">|</span>
+                <span class="new_edt"><a href="portal.php?mod=portalcp&ac=article&op=edit&aid=$value[aid]">{lang edit}</a></span><span class="pipe">|</span><span class="new_edt"><a href="portal.php?mod=portalcp&ac=article&op=delete&aid=$value[aid]" id="article_delete_$value[aid]" onClick="showWindow(this.id, this.href, 'get', 0);">{lang delete}</a></span> 
+                <!--{/if}--></div>
+            </div>
+          </div>
+        </div>
+        
+        <!--{/loop}--> 
+      </div>
+      <!-- 文章列表 end --> 
+      <!--[diy=listloopbottom]-->
+      <div id="listloopbottom" class="area"></div>
+      <!--[/diy]--> 
+    </div>
+    <!--{ad/articlelist/mbm hm/3}--><!--{ad/articlelist/mbm hm/4}--> 
+    <!--{if $list['multi']}-->
+    <div class="pgs cl">{$list['multi']}</div>
+    <!--{/if}--> 
+    
+    <!--[diy=diycontentbottom]-->
+    <div id="diycontentbottom" class="area"></div>
+    <!--[/diy]--> 
+    
+  </div>
+  <div class="sd pph">
+    <div class="drag"> 
+      <!--[diy=diyrighttop]-->
+      <div id="diyrighttop" class="area"></div>
+      <!--[/diy]--> 
+    </div>
+    
+    <!-- 分类 -->
+    <div class="list_box cl"> 
+      <!--{if $cat[subs]}-->
+      
+      <div class="portal_tit cl">
+        <h2>{lang sub_category}</h2>
+      </div>
+      <div class="portal_sort">
+        <ul>
+          <!--{loop $cat[subs] $value}-->
+          <li><a href="{$portalcategory[$value['catid']]['caturl']}">$value[catname]</a></li>
+          <!--{/loop}-->
+        </ul>
+      </div>
+      <!--{elseif $cat[others]}-->
+      <div class="portal_tit cl">
+        <h2>{lang category_related}</h2>
+      </div>
+      <div class="portal_sort">
+        <ul>
+          <!--{loop $cat[others] $value}-->
+          <li><a href="{$portalcategory[$value['catid']]['caturl']}">$value[catname]</a></li>
+          <!--{/loop}-->
+        </ul>
+      </div>
+      
+      <!--{/if}--> 
+    </div>
+    <div class="list_box">
+    <div class="list_focuss cl">
+
+            <!--[diy=list_focuss]-->
+            <div id="list_focuss" class="area"></div>
+            <!--[/diy]--> 
+
+          
+        </div>
+        <script type="text/javascript">jQuery(".list_focuss").slide({titCell:".hd ul",mainCell:".bd ul", effect:"left", delayTime:800,vis:1,scroll:1,easing:"easeOutCubic",autoPage:true,autoPlay:true  });</script>
+    </div>
+
+    
+    <!-- 推荐阅读 -->
+    <div class="list_box cl"> 
+      
+      <!--[diy=sbody]-->
+      <div id="sbody" class="area"></div>
+      <!--[/diy]--> 
+      
+    </div>
+    
+    <!-- 文章排行 -->
+    <div class="list_box cl" id="hbodys">
+      <div class="portal_tit hd cl"> 
+        
+        <!--[diy=hbodytit]-->
+        <div id="hbodytit" class="area"></div>
+        <!--[/diy]--> 
+      </div>
+      <div class="hbody bd">
+        <ul>
+          <!--[diy=hbody]-->
+          <div id="hbody" class="area"></div>
+          <!--[/diy]-->
+          
+        </ul>
+        <ul>
+          <!--[diy=hbody1]-->
+          <div id="hbody1" class="area"></div>
+          <!--[/diy]-->
+          
+        </ul>
+      </div>
+    </div>
+    <script type="text/javascript">jQuery("#hbodys").slide({ titCell:".hd li", mainCell:".bd",delayTime:0 });</script> 
+    
+    <!-- 推荐阅读 -->
+    <div class="list_box cl" id="r_ad"> 
+      
+      <!--[diy=list_ad]-->
+      <div id="list_ad" class="area"></div>
+      <!--[/diy]--> 
+      
+    </div>
+    <div class="drag"> 
+      <!--[diy=diy2]-->
+      <div id="diy2" class="area"></div>
+      <!--[/diy]--> 
+    </div>
+  </div>
+</div>
+<div class="wp mtn"> 
+  <!--[diy=diy3]-->
+  <div id="diy3" class="area"></div>
+  <!--[/diy]--> 
+</div>
+
+<script type="text/javascript">
+
+jQuery(function() { 
+    var elm = jQuery('#r_ad'); 
+    var startPos = jQuery(elm).offset().top; 
+    jQuery.event.add(window, "scroll", function() { 
+        var p = jQuery(window).scrollTop(); 
+        jQuery(elm).css('position',((p) > startPos) ? 'fixed' : 'static'); 
+        jQuery(elm).css('top',((p) > startPos) ? '60px' : ''); 
+    }); 
+}); 
+</script>
+
+<!--{template common/footer}-->
